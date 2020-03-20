@@ -1,0 +1,12 @@
+.container {
+   
+}
+
+
+footer.blog-footer {
+    padding: 1rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 0.2rem solid #e5e5e5;
+}
