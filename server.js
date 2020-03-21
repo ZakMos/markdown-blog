@@ -12,7 +12,7 @@ const methodOverride = require('method-override')
 
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.DATABASE_URL || '0.0.0.0', {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 })
 const db = mongoose.connection
@@ -28,11 +28,16 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
-app.get('/', async (req, res)=> {
-    const articles = await Article.find().sort({
-        createdAt: 'desc'
-    })
-    res.render('index', { articles: articles })
+app.get('/', async (req, res, next)=> {
+    try {
+        const articles = await Article.find().sort({
+            createdAt: 'desc'
+        })
+        res.render('index', { articles: articles })
+    } catch (err) {
+        next (err)
+    }
+    
 })
 
 app.use('/', indexRouter)
