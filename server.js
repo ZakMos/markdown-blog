@@ -37,6 +37,7 @@ app.get('/', async (req, res)=> {
 app.use('/', indexRouter)
 app.use('/articles', articleRouter)
 
-app.listen(process.env.PORT || 3000, function() {
+let port = process.env.PORT || 3000;
+let server = app.listen(port, function() {
     console.log('Express server listening on port %d in %s mode', this.address().port, app.settings.env);
 });

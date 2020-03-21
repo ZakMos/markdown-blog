@@ -1,7 +1,10 @@
 {
   "name": "markdown-blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "Markdown Blog",
+  "engines": {
+    "node": "12.16.1"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
