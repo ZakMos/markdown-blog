@@ -11,7 +11,8 @@ const methodOverride = require('method-override')
 
 
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, {
+
+mongoose.connect(process.env.DATABASE_URL || '0.0.0.0', {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 })
 const db = mongoose.connection
@@ -39,8 +40,8 @@ app.use('/articles', articleRouter)
 
 const path = require ('path')
 
-const port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
 
-let server = app.listen(port, function() {
+app.listen(port, function() {
     console.log('Express server listening on port %d in %s mode', this.address().port, app.settings.env);
 });
