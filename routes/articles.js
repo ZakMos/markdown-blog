@@ -1,12 +1,13 @@
 const express = require('express')
-const Article = require('../models/article')
+const Article = require('./../models/article')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.render('index')
+    res.render('articles/index')
 })
 
-router.get('articles/new', (req, res) => {
+
+router.get('/new', (req, res) => {
     res.render('articles/new', { article: new Article() })
 })
 
@@ -24,7 +25,7 @@ router.get('/:slug', async (req, res) => {
 router.post('/', async (req, res, next) => {
     req.article = new Article()
     next()
-}, saveArticleAndRedirect('new'))
+}, saveArticleAndRedirect('articles/new'))
 
 router.put('/:id', async (req, res, next) => {
     req.article = await Article.findById(req.params.id)
