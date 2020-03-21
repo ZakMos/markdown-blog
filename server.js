@@ -5,7 +5,8 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const Article = require('./models/article')
-const articleRouter = require('./routes/article')
+const indexRouter = require('./routes/index')
+const articleRouter = require('./routes/articles')
 const methodOverride = require('method-override')
 
 
@@ -33,7 +34,9 @@ app.get('/', async (req, res)=> {
     res.render('index', { articles: articles })
 })
 
-app.use('/', articleRouter)
+app.use('/', indexRouter)
+app.use('/articles', articleRouter)
 
-
-app.listen(process.env.PORT || 5000)
+app.listen(process.env.PORT || 3000, function() {
+    console.log('Express server listening on port %d in %s mode', this.address().port, app.settings.env);
+});
