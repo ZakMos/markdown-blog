@@ -16,9 +16,9 @@ router.get('/edit/:id', async (req, res, next) => {
     const article = await Article.findById(req.params.id)
     res.render('articles/edit', { article: article })
     } catch (err) {
-    next (err);
+    next (err)
     }
-});
+})
 
 router.get('/:slug', async (req, res, next) => {
     try {
