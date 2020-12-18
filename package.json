@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/ZakMos/markdown-blog#readme",
   "dependencies": {
-    "dompurify": "^2.0.8",
+    "dompurify": "^2.0.17",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
